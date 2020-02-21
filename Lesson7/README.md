@@ -14,8 +14,7 @@
 
 - hooks에서는 for => htmlFor , class => className 으로 쓰인다.
 
-- 이렇게 쓸수는 있지만 setState를 할때마다 안에 있는 모든 값들을 다 적어줘야 되서 매우 불편하다. 하나만 바꾼다고 setState({first:""})  
-  해주면 다른 값들은 다지워짐.
+- 이렇게 쓸수는 있지만 setState를 할때마다 안에 있는 모든 값들을 다 적어줘야 되서 매우 불편하다. 하나만 바꾼다고 setState({first:""}) 해주면 다른 값들은 다지워짐.
 
   ```javascript
   const [state,setState] = React.useState(
@@ -25,8 +24,7 @@
   result: "");
   ```
 
-- 밑의 함수에서 setState 될때마다 랜더링이 되어야 정상이지만 React에서 알아서 묶어서 한번에 처리해줌. 비동기라서 가능하다. 묶어서 처리할동안  
-  다른일부터함. 하지만 setState를 비동기로 만들다보니 함수가 차례대로 실행되지 않아 만든것이 prevState 이다.
+- 밑의 함수에서 setState 될때마다 랜더링이 되어야 정상이지만 React에서 알아서 묶어서 한번에 처리해줌. 비동기라서 가능하다. 묶어서 처리할동안 다른일부터함. 하지만 setState를 비동기로 만들다보니 함수가 차례대로 실행되지 않아 만든것이 prevState 이다.
 
   ```javascript
   if (first _ second === parseInt(value)) {
