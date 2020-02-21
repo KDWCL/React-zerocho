@@ -18,8 +18,8 @@
 
   ```javascript
   const [state,setState] = React.useState(
-  first: Math.ceil(Math.random() _ 9),
-  second: Math.ceil(Math.random() _ 9),
+  first: Math.ceil(Math.random() * 9),
+  second: Math.ceil(Math.random() * 9),
   value: "",
   result: "");
   ```
@@ -32,8 +32,8 @@
     return value + " 은 정답";
     });
     setValue("");
-    setFirst(Math.ceil(Math.random() _ 9));
-    setSecond(Math.ceil(Math.random() \* 9));
+    setFirst(Math.ceil(Math.random() * 9));
+    setSecond(Math.ceil(Math.random() * 9));
     inputRef.current.focus(); // current안에 focus()함수가 있음.
   } else {
     setResult(prevResult => {
