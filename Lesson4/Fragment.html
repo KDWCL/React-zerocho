@@ -1,0 +1,84 @@
+<!-- 1. onChange, onSubmit 의 함수는 onChange = function(e) =>{} 를 해주면 this 가
+달라지기 때문에 쓰면 안된다. 하지만 render(){return()} 리턴안에서는
+사용가능하다.
+
+2. React.Fragement를 쓰게되면 아무의미 없이 묶을 수 있다. 원래는 <> </> 이렇게도 사용가능 하지만 현재 바벨에서는 지원하지 않는다. 
+3. constructor는 실무에서 쓰이지 않는다. 그냥 바로 state={} 로 쓰면된다. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class GuGuDan extends React.Component {
+        state = {
+          first: Math.ceil(Math.random() * 9),
+          second: Math.ceil(Math.random() * 9),
+          value: "",
+          result: ""
+        };
+
+        onChange = e => {
+          this.setState({ value: e.target.value });
+          console.log(this.state.value);
+        };
+
+        onSubmit = e => {
+          e.preventDefault();
+          if (
+            this.state.first * this.state.second ===
+            parseInt(this.state.value)
+          ) {
+            this.setState({
+              result: this.state.first * this.state.second + "은 정답이네",
+              first: Math.ceil(Math.random() * 9),
+              second: Math.ceil(Math.random() * 9),
+              value: ""
+            });
+          } else {
+            this.setState({
+              result: this.state.value + "은 틀렸네",
+              value: ""
+            });
+          }
+        };
+
+        render() {
+          return (
+            <React.Fragment>
+              <span>
+                {this.state.first}*{this.state.second}는?
+              </span>
+              <form onSubmit={this.onSubmit}>
+                <input
+                  type="number"
+                  value={this.state.value} // 굳이 안써도 되지만 나중에 칸을 초기화 해주기 위해 사용한다.
+                  onChange={this.onChange}
+                />
+                <button>입력해라</button>
+              </form>
+              <span>{this.state.result}</span>
+            </React.Fragment>
+          );
+        }
+      }
+    </script>
+    <script type="text/babel">
+      ReactDOM.render(<GuGuDan />, document.querySelector("#root"));
+    </script>
+  </body>
+</html>

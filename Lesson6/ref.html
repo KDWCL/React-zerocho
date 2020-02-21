@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class GuGuDan extends React.Component {
+        state = {
+          first: Math.ceil(Math.random() * 9),
+          second: Math.ceil(Math.random() * 9),
+          value: "",
+          result: ""
+        };
+
+        onChange = e => {
+          this.setState({ value: e.target.value });
+          console.log(this.state.value);
+        };
+
+        onSubmit = e => {
+          e.preventDefault();
+          if (
+            this.state.first * this.state.second ===
+            parseInt(this.state.value)
+          ) {
+            this.setState(prevState => {
+              return {
+                result: prevState.first * prevState.second + "은 정답이네",
+                first: Math.ceil(Math.random() * 9),
+                second: Math.ceil(Math.random() * 9),
+                value: ""
+              };
+              this.input.focus(); // document.querySelector("input").focus() 와 같다. 결국 자바스크릅트처럼 DOM에 직접 접근해서 바꿔줌.
+            });
+          } else {
+            this.setState(prevState => {
+              return {
+                result: prevState.value + "은 틀렸네",
+                value: ""
+              };
+            });
+            this.input_1.focus(); // document.querySelector("input").focus() 와 같다. 결국 자바스크릅트처럼 DOM에 직접 접근해서 바꿔줌.
+          }
+        };
+
+        input_1; // 선언
+
+        render() {
+          return (
+            <React.Fragment>
+              <span>
+                {this.state.first}*{this.state.second}는?
+              </span>
+              <form onSubmit={this.onSubmit}>
+                <input
+                  type="number"
+                  value={this.state.value}
+                  onChange={this.onChange}
+                  ref={b => {
+                    // ref 속성을 쓰고 매개변수에 들어오는 인자의 값은 document.querySelector("input");와 같다.
+                    // DOM에 직접 접근하고 싶을때 ref를 사용한다.
+                    // react가 제공해주는 기능이다.
+                    // document.querySelector("input");를 리액트에선 거의 쓰지않고 리액트가 화면을 그릴 수 있게 놔두고 우리는 데이터만 만지자!
+                    console.log(this.input);
+                    this.input_1 = b;
+                    console.log(b);
+                  }}
+                />
+                <button>입력해라</button>
+              </form>
+              <span>{this.state.result}</span>
+            </React.Fragment>
+          );
+        }
+      }
+    </script>
+    <script type="text/babel">
+      ReactDOM.render(<GuGuDan />, document.querySelector("#root"));
+    </script>
+  </body>
+</html>

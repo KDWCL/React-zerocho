@@ -1,0 +1,60 @@
+<!-- 
+리액트를 사용하는 이유 3가지
+1. spa이기 때문에 화면로딩이 없다.
+2. 중복되는 부분을 줄일 수 있다 <- 유지보수가 쉬워진다
+3. 데이터랑 화면이랑 일치시키는 것을 리액트가 자동으로 해주는것이 좋다. -->
+<!-- 
+react <- 리액트가 동작하는 핵심적인 코드가 들어있음
+react-dom <- 리액트 코드를 웹에다가 붙여주는 역할 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <!-- https://ko.reactjs.org/docs/add-react-to-a-website.html-->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const e = React.createElement;
+      class LikeButton extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            liked: false
+          };
+        }
+        render() {
+          return e(
+            "button",
+            {
+              onClick: () => {
+                console.log("clicked");
+                if (this.state.liked === false) {
+                  this.setState({ liked: true });
+                } else {
+                  this.setState({ liked: false });
+                }
+              },
+              type: "submit"
+            },
+            this.state.liked === true ? "Liked" : "Like"
+          ); // <button onclick="()=>{console.log("clicked"); this.setState({ liked: true };} type="submit" >{this.state.liked === true ? "Liked" ? "Like"}</button>
+        }
+      }
+    </script>
+    <script>
+      ReactDOM.render(e(LikeButton), document.querySelector("#root")); // 실제로 LikeButton을 Dom에게 넣어주겠다 라는 뜻
+    </script>
+  </body>
+</html>
