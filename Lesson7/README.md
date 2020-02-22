@@ -1,4 +1,4 @@
-# Lesson 11
+# 11강 React Hooks 사용법
 
 - setState나 ref를 사용하지 않을 때 이런식으로 함수형 컴포넌트를 사용했다.
 
@@ -8,7 +8,7 @@
 
 - ref를 hooks에서 사용할 때에는 useRef()를 사용해서 DOM에 접근한다.
 
-# Lesson 12
+# 12강 Class와 Hooks 비교하기
 
 - setState로 값이 바뀌면 함수전체가 재실행된다. 그래서 class보다 느릴 수 있다.
 
