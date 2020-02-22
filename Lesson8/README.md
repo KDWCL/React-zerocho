@@ -28,7 +28,7 @@
 
 5. <script src="./dist/app.js"></script>를 index.js에 추가해준다.
 
-_참고_
+**참고**
 [npm 관련 정리]: https://www.notion.so/kdwcl/Express-js-e046d75562004074b3659f5332e7d784
 
 # 14강 모듈 시스템과 웹팩 설정
@@ -62,7 +62,7 @@ module.exports = WorldRelay;
 const path = require('path')
 // 노드에서 경로를 쉽게 조작하기 위해서 제공하는 기능
 // __dirname은 내 현재경로를 의미
-// 내현재경로+dist를 해서 경로 값을 알아서 반환해줌
+// 내 현재경로+dist를 해서 경로 값을 알아서 반환해줌
 
 module.exports = {
     name : "word-relay-setting",
@@ -88,4 +88,4 @@ module.exports = {
 
 - output은 entry로 입력받은 애들을 합쳐서 어떤 파일로 반환할것인지 설정해주는 곳이다. path로 반환해줄 파일의 경로설정을 해준다. filename으로 파일이름을 설정해준다.
 
-- resolve 라는 것은 entry에서 합칠 파일들이 많아 질 경우를 대비해서 확장자들을 설정해주면 entry에서 파일들을 적을때 확장자는 생략가능하다.
+- resolve 라는 것은 entry에서 합칠 파일들이 많아 질 경우를 대비해서 확장자들을 설정해주면 entry에서 파일들을 적을때 확장자는 생략 가능하다.
