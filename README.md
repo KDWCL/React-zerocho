@@ -1,4 +1,4 @@
-# React
+# React - Zerocho
 
 ## Lesson7
 
@@ -14,12 +14,12 @@
 
 ## Lesson 9
 
-## 15강 웹팩 빌드하기
+### 15강 웹팩 빌드하기
 
-## 16강 구구단 웹팩으로 빌드하기
+### 16강 구구단 웹팩으로 빌드하기
 
-# Lesson 10
+## Lesson 10
 
-## 17강 @babel/preset-env와 plugins
+### 17강 @babel/preset-env와 plugins
 
-## 18강 끝말잇기 Class 만들기
+### 18강 끝말잇기 Class 만들기
