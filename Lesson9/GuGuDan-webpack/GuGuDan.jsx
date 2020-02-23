@@ -1,12 +1,15 @@
+const React = require('react');
+const { useState, useRef } = React;
+
 const GuGuDan = () => {
   // setState나 ref를 사용하지 않을 때 이런식으로 함수형 컴포넌트를 사용했다
   // 하지만 사람들이 setState,ref를 함수형으로 쓰고 싶어 요청하게 되었고 그렇게 hooks가 만들어졌다
   // state 를 hooks 에서 사용할 때에는 destructuring 구문을 사용한다. 변수자리에 객체나 배열이옴.
-  const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9));
-  const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
-  const [value, setValue] = React.useState('');
-  const [result, setResult] = React.useState('');
-  const inputRef = React.useRef(null); // 안에 매개변수는 넣어줘도되고 안넣어줘도 무방
+  const [first, setFirst] = useState(Math.ceil(Math.random() * 9));
+  const [second, setSecond] = useState(Math.ceil(Math.random() * 9));
+  const [value, setValue] = useState('');
+  const [result, setResult] = useState('');
+  const inputRef = useRef(null); // 안에 매개변수는 넣어줘도되고 안넣어줘도 무방
   console.log(inputRef);
 
   const onSubmit = e => {
