@@ -38,7 +38,7 @@
 - jsx파일안의 컴포넌트를 모듈화 시켜서 내가 필요한 컴포넌트들만 들고올때 편리함.
 
 ```javascript
-const React = require("react");
+const React = require('react');
 const ReactDom = require(`react-dom`);
 // require의 역할은 일단 내 폴더에서 react파일을 찾고 없으면 node_modules에서 찾아서 가져온다.
 const WorldRelay = require(`./WordRelay`);
@@ -59,25 +59,25 @@ module.exports = WorldRelay;
 - webpack.config.js에서 해준다.
 
 ```javascript
-const path = require("path");
+const path = require('path');
 // 노드에서 경로를 쉽게 조작하기 위해서 제공하는 기능
 // __dirname은 내 현재경로를 의미
 // 내 현재경로+dist를 해서 경로 값을 알아서 반환해줌
 
 module.exports = {
-  name: "word-relay-setting",
-  mode: "development", // 배포시 : production
-  devtool: "eval", // eval은 빠르게 하겠다는 뜻
+  name: 'word-relay-setting',
+  mode: 'development', // 배포시 : production
+  devtool: 'eval', // eval은 빠르게 하겠다는 뜻
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: ['.js', '.jsx']
   },
   entry: {
-    app: ["./client"]
+    app: ['./client']
     // app: ['./client','./WorldRelay']
   }, // entry : 입력
   output: {
-    path: path.join(__dirname, "dist"),
-    filename: "app.js"
+    path: path.join(__dirname, 'dist'),
+    filename: 'app.js'
   } // output : 출력
 };
 ```
