@@ -25,8 +25,8 @@
         const [second, setSecond] = React.useState(
           Math.ceil(Math.random() * 9)
         );
-        const [value, setValue] = React.useState("");
-        const [result, setResult] = React.useState("");
+        const [value, setValue] = React.useState('');
+        const [result, setResult] = React.useState('');
         const inputRef = React.useRef(null); // 안에 매개변수는 넣어줘도되고 안넣어줘도 무방
         console.log(inputRef);
 
@@ -34,17 +34,17 @@
           e.preventDefault();
           if (first * second === parseInt(value)) {
             setResult(prevResult => {
-              return value + " 은 정답";
+              return value + ' 은 정답';
             });
-            setValue("");
+            setValue('');
             setFirst(Math.ceil(Math.random() * 9));
             setSecond(Math.ceil(Math.random() * 9));
             inputRef.current.focus(); // current안에 focus()함수가 있음.
           } else {
             setResult(prevResult => {
-              return value + " 은 땡";
+              return value + ' 은 땡';
             });
-            setValue("");
+            setValue('');
             inputRef.current.focus();
           }
         };
@@ -53,7 +53,7 @@
           setValue(e.target.value);
         };
 
-        console.log("랜더링"); // setState로 값이 바뀌면 함수전체가 재실행된다. 그래서 class보다 느릴 수 있다.
+        console.log('랜더링'); // setState로 값이 바뀌면 함수전체가 재실행된다. 그래서 class보다 느릴 수 있다.
         return (
           <div>
             <span>
@@ -73,7 +73,7 @@
       };
     </script>
     <script type="text/babel">
-      ReactDOM.render(<GuGuDan />, document.querySelector("#root"));
+      ReactDOM.render(<GuGuDan />, document.querySelector('#root'));
     </script>
   </body>
 </html>
