@@ -4,11 +4,11 @@
 
 - 웹팩은 이러한 여러개의 자바스크립트의 파일을 하나의 자바스크립트 파일로 합쳐준다.
 
--  웹팩을 쓰기 위해선 자바스크립트 실행기인 node를 알아야 한다. 웹팩 또한 자바스크립트이기 때문이다.
+- 웹팩을 쓰기 위해선 자바스크립트 실행기인 node를 알아야 한다. 웹팩 또한 자바스크립트이기 때문이다.
 
 ## 웹팩 사용하기전 셋팅
 
-1. npm init 
+1. npm init
 
 - packagename 만 지어주고 다른건 그냥 넘기자
 
@@ -28,8 +28,8 @@
 
 5. <script src="./dist/app.js"></script>를 index.js에 추가해준다.
 
-**참고**
-[npm 관련 정리]: https://www.notion.so/kdwcl/Express-js-e046d75562004074b3659f5332e7d784
+**참고**  
+[npm 관련 정리]: (https://www.notion.so/kdwcl/Express-js-e046d75562004074b3659f5332e7d784)
 
 # 14강 모듈 시스템과 웹팩 설정
 
@@ -38,18 +38,18 @@
 - jsx파일안의 컴포넌트를 모듈화 시켜서 내가 필요한 컴포넌트들만 들고올때 편리함.
 
 ```javascript
-const React = require('react')
-const ReactDom = require(`react-dom`)
+const React = require("react");
+const ReactDom = require(`react-dom`);
 // require의 역할은 일단 내 폴더에서 react파일을 찾고 없으면 node_modules에서 찾아서 가져온다.
-const WorldRelay = require(`./WordRelay`)
+const WorldRelay = require(`./WordRelay`);
 // 애는 내 폴더에 파일이 있기 때문에 위치 지정을 해준다.
 ```
 
 - 이렇게 jsx파일에서 컴포넌트를 들고오기 위해서는 export를 해야한다. export를 하게되면 다른 파일에서 이 파일의 export되어진 컴포넌트를 땡겨올 수 있다. module.exports는 노드의 기능이다.
 
 ```javascript
-class WorldRelay extends React.Component{
-render(){}
+class WorldRelay extends React.Component {
+  render() {}
 }
 module.exports = WorldRelay;
 ```
@@ -59,27 +59,27 @@ module.exports = WorldRelay;
 - webpack.config.js에서 해준다.
 
 ```javascript
-const path = require('path')
+const path = require("path");
 // 노드에서 경로를 쉽게 조작하기 위해서 제공하는 기능
 // __dirname은 내 현재경로를 의미
 // 내 현재경로+dist를 해서 경로 값을 알아서 반환해줌
 
 module.exports = {
-    name : "word-relay-setting",
-    mode : "development", // 배포시 : production
-    devtool: "eval", // eval은 빠르게 하겠다는 뜻
-    resolve: {
-        extensions: ['.js','.jsx']
-    },
-    entry:{ 
-       app: ['./client']
-       // app: ['./client','./WorldRelay']
-    },// entry : 입력
-    output:{
-       path: path.join(__dirname, 'dist'),
-        filename: 'app.js'
-    }// output : 출력
-}   
+  name: "word-relay-setting",
+  mode: "development", // 배포시 : production
+  devtool: "eval", // eval은 빠르게 하겠다는 뜻
+  resolve: {
+    extensions: [".js", ".jsx"]
+  },
+  entry: {
+    app: ["./client"]
+    // app: ['./client','./WorldRelay']
+  }, // entry : 입력
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "app.js"
+  } // output : 출력
+};
 ```
 
 - 우리가 웹팩을 통해 해야될 것은 index.js에 있는 <script src="./dist/app.js"></script> 이 js하나에 모든 js,jsx파일들이 합쳐져야 된다. 그렇기 때문에 webpack.config.js에서 합쳐준다.
